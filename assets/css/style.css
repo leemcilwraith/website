@@ -2,17 +2,18 @@
    Design tokens
    ------------------------------------------------------------------ */
 :root {
-  --color-bg: #faf9f7;
+  --color-bg: #f4f6f8;
   --color-surface: #ffffff;
-  --color-text: #1a1a1a;
-  --color-text-muted: #5c5954;
-  --color-border: #e6e2db;
-  --color-accent: #b8461f;
-  --color-accent-soft: #f3e2da;
+  --color-text: #161a20;
+  --color-text-muted: #5b6472;
+  --color-border: #dde1e7;
+  --color-accent: #2952e3;
+  --color-accent-hover: #1f3fb8;
+  --color-accent-soft: #e8edfc;
   --font-body: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-heading: Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
   --max-width: 72rem;
-  --radius: 10px;
+  --radius: 4px;
 }
 
 /* ------------------------------------------------------------------
@@ -53,7 +54,8 @@ a {
 h1,
 h2,
 h3 {
-  font-family: var(--font-heading);
+  font-weight: 800;
+  letter-spacing: -0.02em;
   line-height: 1.2;
   margin: 0 0 0.5em;
 }
@@ -126,9 +128,9 @@ p {
 }
 
 .brand {
-  font-family: var(--font-heading);
-  font-size: 1.3rem;
-  font-weight: 700;
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
   text-decoration: none;
 }
 
@@ -247,7 +249,7 @@ main {
 }
 
 .btn-primary:hover {
-  background: #9a3a19;
+  background: var(--color-accent-hover);
 }
 
 .btn-secondary {
@@ -280,11 +282,12 @@ main {
 .social-link {
   display: inline-flex;
   align-items: center;
-  padding: 0.4rem 0.9rem;
+  padding: 0.4rem 0.8rem;
   border: 1px solid var(--color-border);
-  border-radius: 999px;
+  border-radius: var(--radius);
   text-decoration: none;
-  font-size: 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
   color: var(--color-text-muted);
   transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease;
 }
@@ -303,6 +306,7 @@ main {
 }
 
 .hero .eyebrow {
+  font-family: var(--font-mono);
   color: var(--color-accent);
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -311,15 +315,16 @@ main {
 }
 
 .hero-headline {
-  font-family: var(--font-heading);
   font-size: clamp(1.3rem, 3vw, 1.7rem);
+  font-weight: 700;
   max-width: 34rem;
   margin-bottom: 0.4rem;
 }
 
 .hero-role {
+  font-family: var(--font-mono);
   color: var(--color-text-muted);
-  font-weight: 600;
+  font-size: 0.95rem;
   max-width: 34rem;
 }
 
@@ -398,10 +403,11 @@ main {
 }
 
 .project-tags li {
+  font-family: var(--font-mono);
   font-size: 0.75rem;
   color: var(--color-text-muted);
   background: var(--color-accent-soft);
-  border-radius: 999px;
+  border-radius: var(--radius);
   padding: 0.2rem 0.6rem;
 }
 
@@ -533,6 +539,7 @@ main {
 }
 
 .playlist-index {
+  font-family: var(--font-mono);
   color: var(--color-text-muted);
   font-size: 0.85rem;
   flex-shrink: 0;
@@ -565,7 +572,8 @@ main {
 }
 
 .copyright {
+  font-family: var(--font-mono);
   margin: 0;
   color: var(--color-text-muted);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
