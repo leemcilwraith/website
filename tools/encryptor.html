@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Family Video Encryptor (local tool)</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <style>
+    textarea {
+      width: 100%;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.85rem;
+      padding: 0.75rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+    }
+    .field {
+      margin-bottom: 1.25rem;
+    }
+    .field label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+    .field input[type="password"] {
+      width: 100%;
+      padding: 0.7rem 0.9rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      font-size: 1rem;
+    }
+    .warning-banner {
+      border: 1px solid #a3231a;
+      background: #fbe9e7;
+      color: #7a1a13;
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius);
+      margin-bottom: 1.5rem;
+    }
+    .status-message {
+      margin-top: 0.75rem;
+      font-weight: 600;
+    }
+    .status-message.error {
+      color: #a3231a;
+    }
+    .status-message.success {
+      color: #1f7a4d;
+    }
+  </style>
+</head>
+<body>
+  <main class="container section" style="max-width: 48rem;">
+    <h1>Family Video Encryptor</h1>
+    <p>
+      Standalone local tool. Open it directly in a browser, encrypt your
+      video list, then paste the resulting blob into <code>family-data.js</code>
+      on the site. This page never sends anything over the network - it only
+      uses your browser's built-in Web Crypto API.
+    </p>
+
+    <div class="warning-banner" id="crypto-warning" hidden>
+      <strong>Web Crypto isn't available on this page.</strong>
+      <code>crypto.subtle</code> requires a secure context. If you opened this
+      file directly (<code>file://</code>) and your browser blocks it there,
+      run a trivial local server instead and open it over
+      <code>http://localhost</code>, e.g.:
+      <pre>python3 -m http.server
+open http://localhost:8000/tools/encryptor.html</pre>
+    </div>
+
+    <p><strong>Never commit</strong> this page's output alongside the plaintext
+      JSON or passphrase - only the encrypted blob belongs in the repo.</p>
+
+    <form id="encrypt-form">
+      <div class="field">
+        <label for="passphrase">Passphrase</label>
+        <input type="password" id="passphrase" name="passphrase" autocomplete="new-password" required />
+      </div>
+
+      <div class="field">
+        <label for="video-json">Video list (JSON array)</label>
+        <textarea id="video-json" rows="10" spellcheck="false" placeholder='[
+  {
+    "title": "Birthday party 2026",
+    "description": "Optional short description",
+    "url": "https://youtu.be/VIDEOID"
+  }
+]'></textarea>
+      </div>
+
+      <div class="button-row">
+        <button class="btn btn-primary" type="submit">Encrypt</button>
+      </div>
+
+      <p class="status-message" id="status-message" hidden></p>
+    </form>
+
+    <div class="field" id="output-field" hidden>
+      <label for="output">Encrypted blob - paste this into <code>family-data.js</code></label>
+      <textarea id="output" rows="6" readonly spellcheck="false"></textarea>
+      <div class="button-row">
+        <button class="btn btn-secondary" type="button" id="copy-button">Copy to clipboard</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="../assets/js/crypto.js"></script>
+  <script>
+    const warningEl = document.getElementById("crypto-warning");
+    if (!window.crypto || !window.crypto.subtle) {
+      warningEl.hidden = false;
+    }
+
+    const form = document.getElementById("encrypt-form");
+    const statusEl = document.getElementById("status-message");
+    const outputField = document.getElementById("output-field");
+    const outputEl = document.getElementById("output");
+    const copyButton = document.getElementById("copy-button");
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      statusEl.hidden = true;
+      outputField.hidden = true;
+
+      const passphrase = document.getElementById("passphrase").value;
+      const rawJson = document.getElementById("video-json").value;
+
+      let parsed;
+      try {
+        parsed = JSON.parse(rawJson);
+        if (!Array.isArray(parsed)) {
+          throw new Error("Video list must be a JSON array.");
+        }
+      } catch (err) {
+        showStatus(`Invalid JSON: ${err.message}`, "error");
+        return;
+      }
+
+      try {
+        const blob = await FamilyCrypto.encryptText(passphrase, JSON.stringify(parsed));
+        outputEl.value = blob;
+        outputField.hidden = false;
+        showStatus("Encrypted successfully. Copy the blob below into family-data.js.", "success");
+      } catch (err) {
+        showStatus(`Encryption failed: ${err.message}`, "error");
+      }
+    });
+
+    copyButton.addEventListener("click", async () => {
+      await navigator.clipboard.writeText(outputEl.value);
+      showStatus("Copied to clipboard.", "success");
+    });
+
+    function showStatus(message, type) {
+      statusEl.textContent = message;
+      statusEl.className = `status-message ${type}`;
+      statusEl.hidden = false;
+    }
+  </script>
+</body>
+</html>
