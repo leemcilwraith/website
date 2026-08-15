@@ -461,20 +461,17 @@ main {
   font-weight: 600;
 }
 
-.video-list {
+.family-player {
   display: grid;
   gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  list-style: none;
-  margin: 2rem 0 0;
-  padding: 0;
+  margin-top: 1.5rem;
 }
 
-.video-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: 1rem;
+@media (min-width: 56rem) {
+  .family-player {
+    grid-template-columns: 2fr 1fr;
+    align-items: start;
+  }
 }
 
 .video-embed {
@@ -482,7 +479,7 @@ main {
   aspect-ratio: 16 / 9;
   border-radius: var(--radius);
   overflow: hidden;
-  margin-top: 0.75rem;
+  background: #000;
 }
 
 .video-embed iframe {
@@ -491,6 +488,58 @@ main {
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+.player-main h2 {
+  margin-top: 1rem;
+}
+
+.playlist ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--color-surface);
+}
+
+.playlist-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.playlist li:last-child .playlist-item {
+  border-bottom: none;
+}
+
+.playlist-item:hover {
+  background: var(--color-accent-soft);
+}
+
+.playlist-item.is-active {
+  background: var(--color-accent-soft);
+  box-shadow: inset 3px 0 0 var(--color-accent);
+}
+
+.playlist-index {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.playlist-title {
+  font-weight: 600;
 }
 
 /* ------------------------------------------------------------------
