@@ -1,0 +1,7 @@
+# Never commit plaintext family video lists or passphrases
+*plaintext*
+*.secret
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db

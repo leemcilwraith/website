@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Family - Your Name</title>
+  <meta name="description" content="Private family video area." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="canonical" href="/family.html" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">Your Name</a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="primary-nav">
+        <span class="sr-only">Menu</span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <nav class="primary-nav" id="primary-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+        <a href="family.html" aria-current="page">Family</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="container section">
+      <h1>Family</h1>
+
+      <div class="family-gate" id="family-gate">
+        <p>This area is private. Enter the passphrase to see the videos.</p>
+        <form class="family-form" id="family-unlock-form">
+          <label for="family-password">Passphrase</label>
+          <input
+            type="password"
+            id="family-password"
+            name="family-password"
+            autocomplete="current-password"
+            required
+          />
+          <button class="btn btn-primary" type="submit">Unlock</button>
+          <p class="form-error" id="family-error" role="alert" hidden></p>
+        </form>
+      </div>
+
+      <div id="family-content" hidden>
+        <ul class="video-list" id="family-video-list"></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="social-links" aria-label="Social profiles">
+        <a class="social-link" data-social="linkedin"></a>
+        <a class="social-link" data-social="youtube"></a>
+        <a class="social-link" data-social="github"></a>
+        <a class="social-link" data-social="x"></a>
+        <a class="social-link" data-social="instagram"></a>
+      </div>
+      <p class="copyright">&copy; <span id="current-year">2026</span> Your Name. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/social-links.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/crypto.js" defer></script>
+  <script src="family-data.js" defer></script>
+  <script src="assets/js/family.js" defer></script>
+</body>
+</html>

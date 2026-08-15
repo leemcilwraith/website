@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /family.html
+Disallow: /tools/
+Allow: /
