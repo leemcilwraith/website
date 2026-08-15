@@ -4,11 +4,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const errorEl = document.getElementById("family-error");
   const gate = document.getElementById("family-gate");
   const content = document.getElementById("family-content");
-  const list = document.getElementById("family-video-list");
+  const frame = document.getElementById("video-frame");
+  const titleEl = document.getElementById("video-title");
+  const descriptionEl = document.getElementById("video-description");
+  const playlistEl = document.getElementById("video-playlist");
 
   if (!form) {
     return;
   }
+
+  let videos = [];
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -28,8 +33,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       const json = await FamilyCrypto.decryptText(passphrase, ENCRYPTED_FAMILY_DATA);
-      const videos = JSON.parse(json);
-      renderVideos(videos);
+      videos = JSON.parse(json);
+      renderPlaylist();
+      selectVideo(0);
       gate.hidden = true;
       content.hidden = false;
     } catch (err) {
@@ -78,27 +84,44 @@ document.addEventListener("DOMContentLoaded", () => {
     return div.innerHTML;
   }
 
-  function renderVideos(videos) {
-    list.innerHTML = "";
+  function renderPlaylist() {
+    playlistEl.innerHTML = "";
 
-    videos.forEach((video) => {
-      const videoId = extractYouTubeId(video.url || video.id);
+    videos.forEach((video, index) => {
       const item = document.createElement("li");
-      item.className = "video-card";
-      item.innerHTML = `
-        <h3>${escapeHtml(video.title || "Untitled")}</h3>
-        ${video.description ? `<p>${escapeHtml(video.description)}</p>` : ""}
-        <div class="video-embed">
-          <iframe
-            src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}"
-            title="${escapeHtml(video.title || "Family video")}"
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
-        </div>
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "playlist-item";
+      button.dataset.index = String(index);
+      button.innerHTML = `
+        <span class="playlist-index">${index + 1}</span>
+        <span class="playlist-title">${escapeHtml(video.title || "Untitled")}</span>
       `;
-      list.appendChild(item);
+      button.addEventListener("click", () => selectVideo(index));
+      item.appendChild(button);
+      playlistEl.appendChild(item);
+    });
+  }
+
+  function selectVideo(index) {
+    const video = videos[index];
+    if (!video) {
+      return;
+    }
+
+    const videoId = extractYouTubeId(video.url || video.id);
+    const title = video.title || "Family video";
+
+    frame.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}`;
+    frame.title = title;
+    titleEl.textContent = title;
+    descriptionEl.textContent = video.description || "";
+    descriptionEl.hidden = !video.description;
+
+    playlistEl.querySelectorAll(".playlist-item").forEach((button) => {
+      const isActive = Number(button.dataset.index) === index;
+      button.classList.toggle("is-active", isActive);
+      button.setAttribute("aria-current", isActive ? "true" : "false");
     });
   }
 });
