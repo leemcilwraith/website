@@ -310,6 +310,19 @@ main {
   font-size: 0.85rem;
 }
 
+.hero-headline {
+  font-family: var(--font-heading);
+  font-size: clamp(1.3rem, 3vw, 1.7rem);
+  max-width: 34rem;
+  margin-bottom: 0.4rem;
+}
+
+.hero-role {
+  color: var(--color-text-muted);
+  font-weight: 600;
+  max-width: 34rem;
+}
+
 .hero p.lede {
   font-size: 1.15rem;
   color: var(--color-text-muted);

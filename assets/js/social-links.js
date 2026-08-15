@@ -3,8 +3,8 @@
  * Leave a value empty to hide that link automatically.
  */
 const SOCIAL_LINKS = {
-  linkedin: "",
-  youtube: "",
+  linkedin: "https://www.linkedin.com/in/leemcilwraith",
+  youtube: "https://www.youtube.com/@leemousemac",
   github: "",
   x: "",
   instagram: "",

@@ -6,6 +6,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <rect width="1200" height="630" fill="#faf9f7"/>
   <rect x="0" y="0" width="1200" height="14" fill="#b8461f"/>
-  <text x="80" y="330" font-family="Georgia, serif" font-size="72" fill="#1a1a1a">Your Name</text>
-  <text x="80" y="400" font-family="system-ui, sans-serif" font-size="32" fill="#5c5954">What you do, in a punchy line.</text>
+  <text x="80" y="330" font-family="Georgia, serif" font-size="72" fill="#1a1a1a">Lee McIlwraith</text>
+  <text x="80" y="400" font-family="system-ui, sans-serif" font-size="32" fill="#5c5954">Director of Strategic Solutions at Natterbox</text>
 </svg>
