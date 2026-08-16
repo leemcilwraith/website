@@ -28,6 +28,17 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+section[id] {
+  scroll-margin-top: 5.5rem;
 }
 
 body {
@@ -120,6 +131,9 @@ p {
    Header / nav
    ------------------------------------------------------------------ */
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
   border-bottom: 1px solid var(--color-border);
   background: var(--color-surface);
 }

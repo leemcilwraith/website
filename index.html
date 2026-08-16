@@ -5,23 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Lee McIlwraith - Director of Strategic Solutions</title>
   <meta name="description" content="Director of Strategic Solutions at Natterbox - working at the sharp end of AI voice, telecoms and Salesforce." />
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="canonical" href="/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Lee McIlwraith - Director of Strategic Solutions" />
   <meta property="og:description" content="Director of Strategic Solutions at Natterbox - working at the sharp end of AI voice, telecoms and Salesforce." />
-  <meta property="og:image" content="assets/img/og-image.svg" />
+  <meta property="og:image" content="/assets/img/og-image.svg" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="index.html">Lee McIlwraith</a>
+      <a class="brand" href="#home">Lee McIlwraith</a>
       <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="primary-nav">
         <span class="sr-only">Menu</span>
         <span class="nav-toggle-bar"></span>
@@ -29,17 +29,16 @@
         <span class="nav-toggle-bar"></span>
       </button>
       <nav class="primary-nav" id="primary-nav" aria-label="Primary">
-        <a href="index.html" aria-current="page">Home</a>
-        <a href="about.html">About</a>
-        <a href="projects.html">Projects</a>
-        <a href="contact.html">Contact</a>
-        <a href="family.html">Family</a>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <section class="container hero">
+    <section id="home" class="container hero">
       <p class="eyebrow">Hello, I'm</p>
       <h1>Lee McIlwraith</h1>
       <p class="hero-headline">I turn complex, ambiguous problems into systems that actually work.</p>
@@ -54,9 +53,110 @@
         and how to get hold of me.
       </p>
       <div class="button-row">
-        <a class="btn btn-primary" href="projects.html">See my work</a>
-        <a class="btn btn-secondary" href="contact.html">Get in touch</a>
+        <a class="btn btn-primary" href="#projects">See my work</a>
+        <a class="btn btn-secondary" href="#contact">Get in touch</a>
       </div>
+      <div class="social-links" aria-label="Social profiles">
+        <a class="social-link" data-social="linkedin"></a>
+        <a class="social-link" data-social="youtube"></a>
+        <a class="social-link" data-social="github"></a>
+        <a class="social-link" data-social="x"></a>
+        <a class="social-link" data-social="instagram"></a>
+      </div>
+    </section>
+
+    <section id="about" class="container section narrow">
+      <h2>A bit about me</h2>
+      <div class="about-layout">
+        <img class="about-photo" src="/assets/img/leemcilwraith.jpeg" alt="Lee McIlwraith" />
+        <div>
+          <p>
+            I've spent my career getting to grips with hard technical problems and
+            turning them into things that work for real people and real
+            businesses.
+          </p>
+          <p>
+            I started as the first dedicated support engineer at a young telecoms
+            startup, learning SIP, networking and voice from the ground up by
+            diagnosing gnarly, multi-vendor problems no one else could crack.
+            Over the next fifteen years I built and led global support,
+            professional services and delivery teams - follow-the-sun operations
+            spanning the UK, US and Australia - and took ownership of the
+            complex, high-risk customer implementations where things simply had
+            to go right.
+          </p>
+          <p>
+            These days I sit at the intersection of product, engineering and
+            commercial teams as Director of Strategic Solutions. My focus is the
+            hardest, least-defined problems: conversational AI voice agents,
+            automation, and integration-heavy solutions that don't have an
+            off-the-shelf answer. I still like to build - prototyping, wiring up
+            APIs and integrations, and putting together the tooling and
+            lightweight frontends needed to prove an idea and get it in front of
+            customers quickly.
+          </p>
+          <p>
+            What I care about is the same thing it always has been: understanding
+            a problem properly, then making something that genuinely solves it.
+          </p>
+          <p>
+            Away from work, I captain a senior men's hockey team and coach youth
+            sport, so a fair bit of my spare time is spent on a pitch one way or
+            another. I'm also proud to be a governor of Muntham House School.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="container section">
+      <h2>Selected work</h2>
+      <p>A selection of things I've built or worked on.</p>
+
+      <ul class="project-grid">
+        <li class="project-card">
+          <h3>Conversational AI voice agents in production</h3>
+          <p>
+            Designed and deployed live AI voice agents handling real customer
+            call volumes - including one fielding around 1,000 missed calls a
+            month at roughly an 82% success rate, replacing a third-party
+            answering service while routing genuine, high-value calls to the
+            right place and filtering out the noise.
+          </p>
+        </li>
+        <li class="project-card">
+          <h3>Building to prove ideas fast</h3>
+          <p>
+            I work end-to-end - from discovery and solution design through to
+            rapid prototypes, APIs, integrations and lightweight frontends - so
+            ideas get validated and put in front of customers quickly rather
+            than getting stuck in theory.
+          </p>
+        </li>
+        <li class="project-card">
+          <h3>Leading delivery at scale</h3>
+          <p>
+            Led global professional services and delivery across three
+            continents, owning the successful go-live and adoption of complex
+            enterprise implementations, and stepping in as the senior,
+            hands-on point whenever a high-risk engagement needed rescuing.
+          </p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="contact" class="container section narrow">
+      <h2>Get in touch</h2>
+      <p>
+        The best way to reach me is on LinkedIn. I'm always happy to talk about
+        AI voice, automation, thorny technical problems, or anything else
+        interesting.
+      </p>
+
+      <div class="button-row">
+        <a class="btn btn-primary" data-social="linkedin" target="_blank" rel="noopener"></a>
+      </div>
+
+      <h3>Elsewhere</h3>
       <div class="social-links" aria-label="Social profiles">
         <a class="social-link" data-social="linkedin"></a>
         <a class="social-link" data-social="youtube"></a>
@@ -80,7 +180,7 @@
     </div>
   </footer>
 
-  <script src="assets/js/social-links.js" defer></script>
-  <script src="assets/js/main.js" defer></script>
+  <script src="/assets/js/social-links.js" defer></script>
+  <script src="/assets/js/main.js" defer></script>
 </body>
 </html>
