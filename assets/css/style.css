@@ -425,23 +425,6 @@ main {
 }
 
 /* ------------------------------------------------------------------
-   Contact
-   ------------------------------------------------------------------ */
-.contact-methods {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 280px));
-  gap: 1rem;
-  margin: 1.5rem 0 2rem;
-}
-
-.contact-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: 1.25rem 1.5rem;
-}
-
-/* ------------------------------------------------------------------
    Family (gated) area
    ------------------------------------------------------------------ */
 .family-gate {
