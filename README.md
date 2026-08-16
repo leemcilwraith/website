@@ -4,8 +4,10 @@ Personal site - static HTML/CSS/vanilla JS, no build step, deployed via GitHub P
 
 ## Structure
 
-- `index.html`, `about.html`, `projects.html`, `contact.html` - public pages.
-- `family.html` - password-gated page listing private family videos.
+- `index.html` - single-page site (Home, About, Projects, Contact as anchored
+  sections with a sticky nav).
+- `family/index.html` - password-gated page listing private family videos,
+  served at `/family/`. Deliberately not linked from the main nav.
 - `assets/css/style.css` - all site styling.
 - `assets/js/main.js` - mobile nav toggle, footer year.
 - `assets/js/social-links.js` - single place to set social URLs (see below).
@@ -15,12 +17,6 @@ Personal site - static HTML/CSS/vanilla JS, no build step, deployed via GitHub P
 - `family-data.js` - holds only the **encrypted** blob for the Family page.
 - `tools/encryptor.html` - standalone local tool to produce that blob.
 
-## Content to fill in
-
-Everything is currently placeholder copy (`Your Name`, sample bios, project
-cards, `you@example.com`, etc.) - search the HTML files for these and replace
-with real content.
-
 ### Social links
 
 Edit `assets/js/social-links.js` and fill in the URLs you want to use. Any
@@ -28,18 +24,18 @@ left blank are automatically hidden across every page.
 
 ### Custom domain
 
-No `CNAME` file is committed yet. Once you have a domain:
-
-1. Add a `CNAME` file at the repo root containing just the domain, e.g. `example.com`.
-2. Point your DNS at GitHub Pages (an `A`/`ALIAS` record for an apex domain, or a `CNAME` record for a subdomain - see GitHub's Pages docs for current IPs).
-3. In the repo's Settings > Pages, enter the custom domain and enable "Enforce HTTPS" once it resolves.
+`CNAME` is committed with `leemcilwraith.com`. If it ever needs to change,
+update DNS first, then the `CNAME` file, then re-check "Enforce HTTPS" in the
+repo's Settings > Pages.
 
 ## Family area
 
 The video list is never committed in plaintext. To publish or update it:
 
-1. Open `tools/encryptor.html` in a browser (double-click the file, or serve
-   it locally - see below if `crypto.subtle` isn't available over `file://`).
+1. Open `https://leemcilwraith.com/tools/encryptor.html` directly (it's
+   already deployed, so this is a secure context and needs no local server) -
+   or open `tools/encryptor.html` locally if working offline; see below if
+   `crypto.subtle` isn't available over `file://`.
 2. Enter a strong passphrase and your video list as JSON, e.g.:
    ```json
    [
@@ -61,5 +57,4 @@ open http://localhost:8000/tools/encryptor.html
 ## Deployment
 
 GitHub Pages is configured to serve from the `main` branch root. Push to
-`main` and the site is live at the repo's `github.io` URL (or the custom
-domain once configured).
+`main` and the site is live at `leemcilwraith.com`.

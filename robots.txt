@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: /family.html
+Disallow: /family/
 Disallow: /tools/
 Allow: /
