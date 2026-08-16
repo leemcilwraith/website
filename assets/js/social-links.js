@@ -5,7 +5,7 @@
 const SOCIAL_LINKS = {
   linkedin: "https://www.linkedin.com/in/leemcilwraith",
   youtube: "https://www.youtube.com/@leemousemac",
-  github: "",
+  github: "https://github.com/leenatterbox",
   x: "",
   instagram: "",
 };
