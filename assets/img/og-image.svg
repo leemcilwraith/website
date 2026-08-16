@@ -1,7 +1,8 @@
 <!--
-  Placeholder Open Graph preview image.
-  Replace with a real 1200x630 PNG/JPG for best compatibility - some
-  platforms (e.g. LinkedIn, iMessage) don't render SVG previews reliably.
+  Source design for the Open Graph preview image. The deployed asset is
+  og-image.png (rendered from this file at 1200x630) - some platforms
+  (e.g. LinkedIn, iMessage) don't render SVG previews reliably. Edit this
+  file and re-render to update the PNG.
 -->
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <rect width="1200" height="630" fill="#f4f6f8"/>
